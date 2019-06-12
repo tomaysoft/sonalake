@@ -85,7 +85,7 @@ export class ListViewComponent implements OnInit, OnDestroy {
     if (header.length === 0) {
       return ;
     }
-    const parts = header.split(',');
+    const parts = header.split(', ');
     const links = {};
     parts.forEach( p => {
       const section = p.split(';');
