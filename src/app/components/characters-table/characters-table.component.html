@@ -1,0 +1,53 @@
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col" (click)="setSorting('id')">Id
+        <span class="text-right" *ngIf="sort['id']==='asc'">/\</span>
+        <span class="text-right" *ngIf="sort['id']==='desc'">\/</span>
+      </th>
+      <th scope="col" (click)="setSorting('name')">Name
+        <span class="text-right" *ngIf="sort['name']==='asc'">/\</span>
+        <span class="text-right" *ngIf="sort['name']==='desc'">\/</span>
+      </th>
+      <th scope="col" (click)="setSorting('species')">Species
+        <span class="text-right" *ngIf="sort['species']==='asc'">/\</span>
+        <span class="text-right" *ngIf="sort['species']==='desc'">\/</span>
+      </th>
+      <th scope="col" (click)="setSorting('gender')">Gender
+        <span class="text-right" *ngIf="sort['gender']==='asc'">/\</span>
+        <span class="text-right" *ngIf="sort['gender']==='desc'">\/</span>
+      </th>
+      <th scope="col" (click)="setSorting('homeworld')">Homeworld
+        <span class="text-right" *ngIf="sort['homeworld']==='asc'">/\</span>
+        <span class="text-right" *ngIf="sort['homeworld']==='desc'">\/</span>
+      </th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let character of characters">
+        <th scope="row">{{character.id}}</th>
+        <td>{{character.name}}</td>
+        <td>{{character.species}}</td>
+        <td>{{character.gender}}</td>
+        <td>{{character.homeworld}}</td>
+        <td>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+            <button type="button" class="btn btn-secondary" [routerLink]="['/edit', character.id]">
+              <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+            </button>
+            <button type="button" class="btn btn-danger" [routerLink]="" (click)="delete(character.id)">
+              <i class="fa fa-trash-o" aria-hidden="true"></i> Remove
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+
+       <tr *ngIf="characters.length===0">
+        <td colspan="6" class="text-center">
+            No Results Found
+        </td>
+      </tr>
+  </tbody>
+</table>

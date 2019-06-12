@@ -1,0 +1,59 @@
+<h1>Edit Form</h1>
+
+<form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group row" [ngClass]="{required: true}">
+    <label for="name" class="col-sm-2 col-form-label">Name:</label>
+    <div class="col-sm-10">
+      <small id="nameHelp" class="form-text text-muted">Enter name of Star Wars' character</small>
+      <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="nameHelp"
+        placeholder="Enter character name" required
+        [ngClass]="{ 'is-invalid': isSubmitted && characterForm.controls.name.errors }">
+        <small *ngIf="isSubmitted && characterForm.controls.name.errors?.required" class="invalid-feedback">This field is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group is-invalid row" [ngClass]="{required: true}">
+    <label for="species" class="col-sm-2 col-form-label">Species:</label>
+    <div class="col-sm-10">
+      <small id="speciesHelp" class="form-text text-muted">Select it's species</small>
+      <select type="text" formControlName="species" class="form-control" id="species" aria-describedby="speciesHelp"
+        [ngClass]="{ 'is-invalid': isSubmitted && characterForm.controls.species.errors }">
+        <option [ngValue]="null" selected>Choose...</option>
+        <option *ngFor="let species of speciesDict" [ngValue]="species">{{species}}</option>
+      </select>
+      <small *ngIf="isSubmitted && characterForm.controls.species.errors?.required" class="invalid-feedback">This field is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group row" [ngClass]="{required: true}">
+    <label for="gender" class="col-sm-2 col-form-label">Gender:</label>
+    <div class="col-sm-10">
+      <small id="genderHelp" class="form-text text-muted">Select it's gender</small>
+        <div class="form-check form-check-inline" *ngFor="let gender of genderDict">
+          <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="gender" value="{{gender.value}}"  aria-describedby="speciesHelp">
+          <label class="form-check-label" for="gender">{{gender.label}}</label>
+        </div>
+      <small *ngIf="isSubmitted && characterForm.controls.gender.errors?.required" class="invalid-feedback">This field is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="homeworld" class="col-sm-2 col-form-label">Homeworld:</label>
+    <div class="col-sm-10">
+      <small id="homeworldHelp" class="form-text text-muted">Enter it's homeworld</small>
+      <input type="text" formControlName="homeworld" class="form-control" id="homeworld" aria-describedby="homeworldHelp"
+        placeholder="Enter character's homeworld">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6 text-right">
+      <a class="btn btn-primary" routerLink="">Cancel & return</a>
+    </div>
+    <div class="col-sm-6">
+      <button type="submit" class="btn btn-primary" [routerLink]="">Submit</button>
+    </div>
+  </div>
+
+</form>

@@ -40,11 +40,11 @@
   ],
   "characters": [
     {
-      "id": 1,
       "name": "Luke Skywalker",
       "species": "Human",
       "gender": "male",
-      "homeworld": "Tatooine"
+      "homeworld": "Tatooine",
+      "id": 1
     },
     {
       "id": 2,
